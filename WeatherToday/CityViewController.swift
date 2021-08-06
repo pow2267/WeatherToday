@@ -32,6 +32,20 @@ class CityViewController: UIViewController, UITableViewDataSource {
         cell.temperatureLabel.text = "섭씨 \(celsius)도 / 화씨 \(fahrenheit)도"
         cell.rainfallLabel.text = "강수확률 \(self.cities[indexPath.row].rainfallProbability)%"
         
+        if celsius > 25 {
+            cell.temperatureLabel.textColor = UIColor.red
+        } else if celsius < 10 {
+            cell.temperatureLabel.textColor = UIColor.blue
+        } else {
+            cell.temperatureLabel.textColor = UIColor.black
+        }
+        
+        if self.cities[indexPath.row].rainfallProbability > 50 {
+            cell.rainfallLabel.textColor = UIColor.orange
+        } else {
+            cell.rainfallLabel.textColor = UIColor.black
+        }
+        
         return cell
     }
 
@@ -62,6 +76,9 @@ class CityViewController: UIViewController, UITableViewDataSource {
         self.tableView.reloadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
 
     /*
     // MARK: - Navigation
