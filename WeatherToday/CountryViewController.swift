@@ -22,6 +22,7 @@ class CountryViewController: UIViewController, UITableViewDataSource {
         
         cell.textLabel?.text = countries[indexPath.row].koreanName
         cell.imageView?.image = UIImage.init(named: "flag_\(countries[indexPath.row].assetName)")
+        cell.detailTextLabel?.text = countries[indexPath.row].assetName
         
         return cell
     }
@@ -43,6 +44,22 @@ class CountryViewController: UIViewController, UITableViewDataSource {
         }
         
         self.tableView.reloadData()
+    }
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let cityViewController: CityViewController = segue.destination as? CityViewController else {
+            return
+        }
+        
+        guard let cell: UITableViewCell = sender as? UITableViewCell else {
+            return
+        }
+        
+        cityViewController.koreanName = cell.textLabel?.text
+        cityViewController.assetName = cell.detailTextLabel?.text
     }
 }
 

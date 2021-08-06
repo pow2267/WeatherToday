@@ -15,6 +15,8 @@
 		76F9267126BA13BF00D72F7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76F9266F26BA13BF00D72F7B /* LaunchScreen.storyboard */; };
 		76F9267B26BC142F00D72F7B /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F9267A26BC142F00D72F7B /* Country.swift */; };
 		76F9267D26BC223700D72F7B /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F9267C26BC223700D72F7B /* CityViewController.swift */; };
+		76F9267F26BD19D300D72F7B /* CustomCityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F9267E26BD19D300D72F7B /* CustomCityTableViewCell.swift */; };
+		76F9268126BD1DC200D72F7B /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F9268026BD1DC200D72F7B /* City.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		76F9267226BA13BF00D72F7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76F9267A26BC142F00D72F7B /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		76F9267C26BC223700D72F7B /* CityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
+		76F9267E26BD19D300D72F7B /* CustomCityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCityTableViewCell.swift; sourceTree = "<group>"; };
+		76F9268026BD1DC200D72F7B /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,14 +65,16 @@
 			isa = PBXGroup;
 			children = (
 				76F9266426BA13B800D72F7B /* AppDelegate.swift */,
-				76F9266626BA13B800D72F7B /* SceneDelegate.swift */,
-				76F9266826BA13B800D72F7B /* CountryViewController.swift */,
-				76F9266A26BA13B800D72F7B /* Main.storyboard */,
 				76F9266D26BA13BF00D72F7B /* Assets.xcassets */,
-				76F9266F26BA13BF00D72F7B /* LaunchScreen.storyboard */,
-				76F9267226BA13BF00D72F7B /* Info.plist */,
-				76F9267A26BC142F00D72F7B /* Country.swift */,
 				76F9267C26BC223700D72F7B /* CityViewController.swift */,
+				76F9267A26BC142F00D72F7B /* Country.swift */,
+				76F9266826BA13B800D72F7B /* CountryViewController.swift */,
+				76F9267E26BD19D300D72F7B /* CustomCityTableViewCell.swift */,
+				76F9267226BA13BF00D72F7B /* Info.plist */,
+				76F9266F26BA13BF00D72F7B /* LaunchScreen.storyboard */,
+				76F9266A26BA13B800D72F7B /* Main.storyboard */,
+				76F9266626BA13B800D72F7B /* SceneDelegate.swift */,
+				76F9268026BD1DC200D72F7B /* City.swift */,
 			);
 			path = WeatherToday;
 			sourceTree = "<group>";
@@ -146,8 +152,10 @@
 				76F9267B26BC142F00D72F7B /* Country.swift in Sources */,
 				76F9267D26BC223700D72F7B /* CityViewController.swift in Sources */,
 				76F9266926BA13B800D72F7B /* CountryViewController.swift in Sources */,
+				76F9267F26BD19D300D72F7B /* CustomCityTableViewCell.swift in Sources */,
 				76F9266526BA13B800D72F7B /* AppDelegate.swift in Sources */,
 				76F9266726BA13B800D72F7B /* SceneDelegate.swift in Sources */,
+				76F9268126BD1DC200D72F7B /* City.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
