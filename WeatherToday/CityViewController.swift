@@ -14,6 +14,7 @@ class CityViewController: UIViewController, UITableViewDataSource {
     var assetName: String?
     let cellIdentifier: String = "cityCell"
     var cities: [City] = []
+    var weathers: [UIImage] = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.cities.count
@@ -24,22 +25,7 @@ class CityViewController: UIViewController, UITableViewDataSource {
             preconditionFailure("테이블 뷰 셀 가져오기 실패")
         }
         
-        var weatherImage: UIImage?
-        
-        switch self.cities[indexPath.row].state {
-        case 10:
-            weatherImage = UIImage.init(named: "sunny")!
-        case 11:
-            weatherImage = UIImage.init(named: "cloudy")!
-        case 12:
-            weatherImage = UIImage.init(named: "rainy")!
-        case 13:
-            weatherImage = UIImage.init(named: "snowy")!
-        default:
-            weatherImage = nil
-        }
-        
-        cell.weatherImage.image = weatherImage
+        cell.weatherImage.image = self.weathers[self.cities[indexPath.row].state - 10]
         cell.cityNameLabel.text = self.cities[indexPath.row].cityName
         let celsius: Double = self.cities[indexPath.row].celsius
         let fahrenheit: Double = round((Double(celsius * 9 / 5) + 32) * 10) / 10
@@ -65,6 +51,13 @@ class CityViewController: UIViewController, UITableViewDataSource {
         } catch {
             print(error.localizedDescription)
         }
+        
+        self.weathers = [
+            UIImage.init(named: "sunny")!,
+            UIImage.init(named: "cloudy")!,
+            UIImage.init(named: "rainy")!,
+            UIImage.init(named: "snowy")!
+        ]
         
         self.tableView.reloadData()
     }
