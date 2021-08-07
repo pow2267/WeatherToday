@@ -17,6 +17,7 @@
 		76F9267D26BC223700D72F7B /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F9267C26BC223700D72F7B /* CityViewController.swift */; };
 		76F9267F26BD19D300D72F7B /* CustomCityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F9267E26BD19D300D72F7B /* CustomCityTableViewCell.swift */; };
 		76F9268126BD1DC200D72F7B /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F9268026BD1DC200D72F7B /* City.swift */; };
+		76F9268326BE16F700D72F7B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F9268226BE16F600D72F7B /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		76F9267C26BC223700D72F7B /* CityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
 		76F9267E26BD19D300D72F7B /* CustomCityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCityTableViewCell.swift; sourceTree = "<group>"; };
 		76F9268026BD1DC200D72F7B /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		76F9268226BE16F600D72F7B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				76F9266A26BA13B800D72F7B /* Main.storyboard */,
 				76F9266626BA13B800D72F7B /* SceneDelegate.swift */,
 				76F9268026BD1DC200D72F7B /* City.swift */,
+				76F9268226BE16F600D72F7B /* DetailViewController.swift */,
 			);
 			path = WeatherToday;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 				76F9266526BA13B800D72F7B /* AppDelegate.swift in Sources */,
 				76F9266726BA13B800D72F7B /* SceneDelegate.swift in Sources */,
 				76F9268126BD1DC200D72F7B /* City.swift in Sources */,
+				76F9268326BE16F700D72F7B /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

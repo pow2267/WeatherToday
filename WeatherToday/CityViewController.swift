@@ -25,6 +25,7 @@ class CityViewController: UIViewController, UITableViewDataSource {
             preconditionFailure("테이블 뷰 셀 가져오기 실패")
         }
         
+        cell.state = self.cities[indexPath.row].state
         cell.weatherImage.image = self.weathers[self.cities[indexPath.row].state - 10]
         cell.cityNameLabel.text = self.cities[indexPath.row].cityName
         let celsius: Double = self.cities[indexPath.row].celsius
@@ -80,14 +81,19 @@ class CityViewController: UIViewController, UITableViewDataSource {
         self.tableView.reloadData()
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        guard let detailViewController: DetailViewController = segue.destination as? DetailViewController else {
+            return
+        }
+        
+        guard let cell: CustomCityTableViewCell = sender as? CustomCityTableViewCell else {
+            return
+        }
+        
+        detailViewController.selectedCellData = cell.self
     }
-    */
-
 }
