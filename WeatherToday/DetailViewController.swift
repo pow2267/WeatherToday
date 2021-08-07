@@ -13,16 +13,16 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var weatherLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var rainfallLabel: UILabel!
-    var selectedCellData: CustomCityTableViewCell?
+    var selectedCell: CustomCityTableViewCell?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = self.selectedCellData?.cityNameLabel.text
+        self.navigationItem.title = self.selectedCell?.cityNameLabel.text
 
         var weather: String
         
-        switch self.selectedCellData?.state {
+        switch self.selectedCell?.state {
         case 10:
             weather = "맑음"
         case 11:
@@ -35,12 +35,13 @@ class DetailViewController: UIViewController {
             weather = ""
         }
         
-        self.weatherImage.image = self.selectedCellData?.weatherImage.image
+        // 이전 뷰 컨트롤러에서 전달받은 cell의 데이터를 꺼내 뷰에 입력
+        self.weatherImage.image = self.selectedCell?.weatherImage.image
         self.weatherLabel.text = weather
-        self.temperatureLabel.text = self.selectedCellData?.temperatureLabel.text
-        self.rainfallLabel.text = self.selectedCellData?.rainfallLabel.text
+        self.temperatureLabel.text = self.selectedCell?.temperatureLabel.text
+        self.rainfallLabel.text = self.selectedCell?.rainfallLabel.text
         
-        self.temperatureLabel.textColor = self.selectedCellData?.temperatureLabel.textColor
-        self.rainfallLabel.textColor = self.selectedCellData?.rainfallLabel.textColor
+        self.temperatureLabel.textColor = self.selectedCell?.temperatureLabel.textColor
+        self.rainfallLabel.textColor = self.selectedCell?.rainfallLabel.textColor
     }
 }

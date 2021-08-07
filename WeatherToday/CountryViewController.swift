@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CountryViewController.swift
 //  WeatherToday
 //
 //  Created by kwon on 2021/08/04.
@@ -10,29 +10,30 @@ import UIKit
 class CountryViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    let cellIdentifier: String = "countryCell"
     var countries: [Country] = []
     
+    // row 개수 설정
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.countries.count
     }
     
+    // cell 구성
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "countryCell", for: indexPath)
         
-        cell.textLabel?.text = countries[indexPath.row].koreanName
         cell.imageView?.image = UIImage.init(named: "flag_\(countries[indexPath.row].assetName)")
+        cell.textLabel?.text = countries[indexPath.row].koreanName
         cell.detailTextLabel?.text = countries[indexPath.row].assetName
         
         return cell
     }
     
-
+    // JSON 데이터 디코딩 및 테이블 뷰 다시 불러오기
     override func viewDidLoad() {
         super.viewDidLoad()
         
         guard let countries: NSDataAsset = NSDataAsset(name: "countries") else {
-            return
+            preconditionFailure("국가 정보 불러오기 실패")
         }
         
         let jsonDecoder = JSONDecoder()
@@ -46,13 +47,14 @@ class CountryViewController: UIViewController, UITableViewDataSource {
         self.tableView.reloadData()
     }
     
+    // 네비게이션을 통해 뒤로가기 했을 때 이전에 선택했던 cell이 계속 회색으로 표시되는 것 방지
     override func viewWillAppear(_ animated: Bool) {
         self.tableView.reloadData()
     }
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    // 선택한 국가의 한글 이름과 영문 이니셜 다음 뷰 컨트롤러에 전달
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let cityViewController: CityViewController = segue.destination as? CityViewController else {
             return

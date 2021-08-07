@@ -66,18 +66,18 @@
 		76F9266326BA13B800D72F7B /* WeatherToday */ = {
 			isa = PBXGroup;
 			children = (
+				76F9267226BA13BF00D72F7B /* Info.plist */,
 				76F9266426BA13B800D72F7B /* AppDelegate.swift */,
-				76F9266D26BA13BF00D72F7B /* Assets.xcassets */,
+				76F9268026BD1DC200D72F7B /* City.swift */,
 				76F9267C26BC223700D72F7B /* CityViewController.swift */,
 				76F9267A26BC142F00D72F7B /* Country.swift */,
 				76F9266826BA13B800D72F7B /* CountryViewController.swift */,
 				76F9267E26BD19D300D72F7B /* CustomCityTableViewCell.swift */,
-				76F9267226BA13BF00D72F7B /* Info.plist */,
+				76F9268226BE16F600D72F7B /* DetailViewController.swift */,
+				76F9266626BA13B800D72F7B /* SceneDelegate.swift */,
+				76F9266D26BA13BF00D72F7B /* Assets.xcassets */,
 				76F9266F26BA13BF00D72F7B /* LaunchScreen.storyboard */,
 				76F9266A26BA13B800D72F7B /* Main.storyboard */,
-				76F9266626BA13B800D72F7B /* SceneDelegate.swift */,
-				76F9268026BD1DC200D72F7B /* City.swift */,
-				76F9268226BE16F600D72F7B /* DetailViewController.swift */,
 			);
 			path = WeatherToday;
 			sourceTree = "<group>";

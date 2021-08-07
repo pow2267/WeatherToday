@@ -12,27 +12,30 @@ class CityViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     var koreanName: String?
     var assetName: String?
-    let cellIdentifier: String = "cityCell"
     var cities: [City] = []
-    var weathers: [UIImage] = []
+    var weathers: Dictionary<Int, UIImage> = [:]
     
+    // row 개수 설정
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.cities.count
     }
     
+    // cell 구성
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell: CustomCityTableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CustomCityTableViewCell else {
-            preconditionFailure("테이블 뷰 셀 가져오기 실패")
+        guard let cell: CustomCityTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cityCell", for: indexPath) as? CustomCityTableViewCell else {
+            preconditionFailure("커스텀 테이블 뷰 셀 가져오기 실패")
         }
         
+        // cell에 기상정보 입력
         cell.state = self.cities[indexPath.row].state
-        cell.weatherImage.image = self.weathers[self.cities[indexPath.row].state - 10]
+        cell.weatherImage.image = self.weathers[self.cities[indexPath.row].state]
         cell.cityNameLabel.text = self.cities[indexPath.row].cityName
-        let celsius: Double = self.cities[indexPath.row].celsius
-        let fahrenheit: Double = round((Double(celsius * 9 / 5) + 32) * 10) / 10
+        let celsius: Double = self.cities[indexPath.row].celsius // 섭씨
+        let fahrenheit: Double = round((Double(celsius * 9 / 5) + 32) * 10) / 10 // 화씨
         cell.temperatureLabel.text = "섭씨 \(celsius)도 / 화씨 \(fahrenheit)도"
         cell.rainfallLabel.text = "강수확률 \(self.cities[indexPath.row].rainfallProbability)%"
         
+        // 조건에 따른 기상정보 text색 변경
         if celsius > 25 {
             cell.temperatureLabel.textColor = UIColor.red
         } else if celsius < 10 {
@@ -49,14 +52,15 @@ class CityViewController: UIViewController, UITableViewDataSource {
         
         return cell
     }
-
+    
+    // JSON 데이터 디코딩 및 테이블 뷰 다시 불러오기
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.navigationItem.title = self.koreanName
         
         guard let cities: NSDataAsset = NSDataAsset(name: self.assetName!) else {
-            preconditionFailure("도시별 기온 데이터 가져오기 실패")
+            preconditionFailure("도시별 기온 데이터 불러오기 실패")
         }
         
         let jsonDecoder = JSONDecoder()
@@ -67,24 +71,23 @@ class CityViewController: UIViewController, UITableViewDataSource {
             print(error.localizedDescription)
         }
         
-        self.weathers = [
-            UIImage.init(named: "sunny")!,
-            UIImage.init(named: "cloudy")!,
-            UIImage.init(named: "rainy")!,
-            UIImage.init(named: "snowy")!
-        ]
+        // state 값에 해당하는 날씨 이미지 불러오기
+        self.weathers[10] = UIImage.init(named: "sunny")
+        self.weathers[11] = UIImage.init(named: "cloudy")
+        self.weathers[12] = UIImage.init(named: "rainy")
+        self.weathers[13] = UIImage.init(named: "snowy")
         
         self.tableView.reloadData()
     }
     
+    // 네비게이션을 통해 뒤로가기 했을 때 이전에 선택했던 cell이 계속 회색으로 표시되는 것 방지
     override func viewWillAppear(_ animated: Bool) {
         self.tableView.reloadData()
     }
-
+    
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailViewController: DetailViewController = segue.destination as? DetailViewController else {
             return
@@ -94,6 +97,6 @@ class CityViewController: UIViewController, UITableViewDataSource {
             return
         }
         
-        detailViewController.selectedCellData = cell.self
+        detailViewController.selectedCell = cell.self
     }
 }
