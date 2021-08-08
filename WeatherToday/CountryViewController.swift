@@ -47,11 +47,6 @@ class CountryViewController: UIViewController, UITableViewDataSource {
         self.tableView.reloadData()
     }
     
-    // 네비게이션을 통해 뒤로가기 했을 때 이전에 선택했던 cell이 계속 회색으로 표시되는 것 방지
-    override func viewWillAppear(_ animated: Bool) {
-        self.tableView.reloadData()
-    }
-    
     // MARK: - Navigation
     
     // 선택한 국가의 한글 이름과 영문 이니셜 다음 뷰 컨트롤러에 전달
@@ -66,6 +61,9 @@ class CountryViewController: UIViewController, UITableViewDataSource {
         
         cityViewController.koreanName = cell.textLabel?.text
         cityViewController.assetName = cell.detailTextLabel?.text
+        
+        // 이전에 선택했던 cell이 계속 회색으로 표시되는 것 방지
+        cell.backgroundColor = UIColor.white.withAlphaComponent(0.5)
     }
 }
 

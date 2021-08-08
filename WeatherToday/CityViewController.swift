@@ -26,12 +26,13 @@ class CityViewController: UIViewController, UITableViewDataSource {
             preconditionFailure("커스텀 테이블 뷰 셀 가져오기 실패")
         }
         
+        let celsius: Double = self.cities[indexPath.row].celsius // 섭씨
+        let fahrenheit: Double = round((Double(celsius * 9 / 5) + 32) * 10) / 10 // 화씨
+        
         // cell에 기상정보 입력
         cell.state = self.cities[indexPath.row].state
         cell.weatherImage.image = self.weathers[self.cities[indexPath.row].state]
         cell.cityNameLabel.text = self.cities[indexPath.row].cityName
-        let celsius: Double = self.cities[indexPath.row].celsius // 섭씨
-        let fahrenheit: Double = round((Double(celsius * 9 / 5) + 32) * 10) / 10 // 화씨
         cell.temperatureLabel.text = "섭씨 \(celsius)도 / 화씨 \(fahrenheit)도"
         cell.rainfallLabel.text = "강수확률 \(self.cities[indexPath.row].rainfallProbability)%"
         
@@ -80,12 +81,6 @@ class CityViewController: UIViewController, UITableViewDataSource {
         self.tableView.reloadData()
     }
     
-    // 네비게이션을 통해 뒤로가기 했을 때 이전에 선택했던 cell이 계속 회색으로 표시되는 것 방지
-    override func viewWillAppear(_ animated: Bool) {
-        self.tableView.reloadData()
-    }
-    
-    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -98,5 +93,8 @@ class CityViewController: UIViewController, UITableViewDataSource {
         }
         
         detailViewController.selectedCell = cell
+        
+        // 이전에 선택했던 cell이 계속 회색으로 표시되는 것 방지
+        cell.backgroundColor = UIColor.white.withAlphaComponent(0.5)
     }
 }
