@@ -97,6 +97,6 @@ class CityViewController: UIViewController, UITableViewDataSource {
             return
         }
         
-        detailViewController.selectedCell = cell.self
+        detailViewController.selectedCell = cell
     }
 }
