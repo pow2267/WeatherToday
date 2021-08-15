@@ -50,6 +50,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="clx-Yn-VZT"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="maM-78-fpE"/>
                                 </connections>
                             </tableView>
                         </subviews>
